@@ -6,7 +6,7 @@ Project Requirements
  • Open the Package Manager (Window -> Package Manager), install Burst 1.2.3
  • To use the burst compiler in standalone builds, you need to install the Windows SDK and VC++ toolkit from the Visual Studio Installer.
 
-Note: the demo scene example uses the builtin renderpipeline with Rendering Path set to Deferred.
+Note: the demo scene example uses the builtin render pipeline with Rendering Path set to Deferred.
 
 
 Usage
@@ -19,4 +19,4 @@ Usage
 
 Tutorial
 
-www.youtube.com/..
+https://youtu.be/wCxP5lUk6L8
