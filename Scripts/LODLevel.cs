@@ -1,7 +1,10 @@
-﻿[System.Serializable]
-public enum LODLevel
+﻿namespace TurnTheGameOn.ObjectDistanceToggle
 {
-    LOD0,
-    CULLED,
-    NOTSET
+    [System.Serializable]
+    public enum LODLevel
+    {
+        LOD0,
+        CULLED,
+        NOTSET
+    }
 }

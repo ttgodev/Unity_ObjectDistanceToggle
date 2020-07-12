@@ -1,29 +1,32 @@
-﻿using UnityEngine;
-
-public class ObjectDistanceToggle : MonoBehaviour
+﻿namespace TurnTheGameOn.ObjectDistanceToggle
 {
-    public float lod0 = 35;
-    public int assignedIndex;
+    using UnityEngine;
 
-    private void Start()
+    public class ObjectDistanceToggle : MonoBehaviour
     {
-        Register();
-    }
+        public float lod0 = 35;
+        public int assignedIndex;
 
-    public void Register()
-    {
-        if (ObjectDistanceToggleManager.Instance != null)
+        private void Start()
         {
-            assignedIndex = ObjectDistanceToggleManager.Instance.RegisterObject(this);
+            Register();
         }
-    }
 
-    private void OnDestroy()
-    {
-        if (ObjectDistanceToggleManager.Instance != null)
+        public void Register()
         {
-            ObjectDistanceToggleManager.Instance.RemoveObject(assignedIndex);
+            if (ObjectDistanceToggleManager.Instance != null)
+            {
+                assignedIndex = ObjectDistanceToggleManager.Instance.RegisterObject(this);
+            }
         }
-    }
 
+        private void OnDestroy()
+        {
+            if (ObjectDistanceToggleManager.Instance != null)
+            {
+                ObjectDistanceToggleManager.Instance.RemoveObject(assignedIndex);
+            }
+        }
+
+    }
 }

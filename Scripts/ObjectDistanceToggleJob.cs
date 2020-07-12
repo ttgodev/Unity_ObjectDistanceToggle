@@ -1,27 +1,30 @@
-﻿using UnityEngine.Jobs;
-using Unity.Burst;
-using Unity.Collections;
-using Unity.Mathematics;
-
-[BurstCompile]
-public struct LODObjectJob : IJobParallelForTransform
+﻿namespace TurnTheGameOn.ObjectDistanceToggle
 {
-    public float3 playerPosition;
-    public NativeArray<float> distanceToPlayerArray;
-    public NativeArray<float> lod0DistanceArray;
-    public NativeArray<LODLevel> LODLevelArray;
+    using UnityEngine.Jobs;
+    using Unity.Burst;
+    using Unity.Collections;
+    using Unity.Mathematics;
 
-    public void Execute(int index, TransformAccess transformAccess)
+    [BurstCompile]
+    public struct LODObjectJob : IJobParallelForTransform
     {
-        distanceToPlayerArray[index] = math.distance(transformAccess.position, playerPosition);
+        public float3 playerPosition;
+        public NativeArray<float> distanceToPlayerArray;
+        public NativeArray<float> lod0DistanceArray;
+        public NativeArray<LODLevel> LODLevelArray;
 
-        if (distanceToPlayerArray[index] > lod0DistanceArray[index])
+        public void Execute(int index, TransformAccess transformAccess)
         {
-            LODLevelArray[index] = LODLevel.CULLED;
-        }
-        else
-        {
-            LODLevelArray[index] = LODLevel.LOD0;
+            distanceToPlayerArray[index] = math.distance(transformAccess.position, playerPosition);
+
+            if (distanceToPlayerArray[index] > lod0DistanceArray[index])
+            {
+                LODLevelArray[index] = LODLevel.CULLED;
+            }
+            else
+            {
+                LODLevelArray[index] = LODLevel.LOD0;
+            }
         }
     }
 }
